@@ -1,0 +1,98 @@
+[amit@slave tmp]$ cat a.yml 
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: install some package
+    yum:
+     name: httpd1
+     state: present
+    ignore_errors: true
+    register: task_a_result
+    tags:
+     - amit
+     - edureka
+  - name: start the service
+    service:
+     name: httpd 
+     state: started
+    when: task_a_result.rc==0
+    register: service_execution
+    tags:
+     - service
+     - edureka
+  - name: show status
+    debug:
+     var: service_execution.state
+[amit@slave tmp]$ cat b.yml 
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: copy the script
+    copy:
+     src: /tmp/a.sh
+     dest: /tmp/
+  - name: execute the script
+    command: sh /tmp/a.sh
+[amit@slave tmp]$ cat c.yml 
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: replace the content
+    replace:
+     dest: /tmp/b.txt
+     regexp: 'thursday'
+     replace: 'friday'
+[amit@slave tmp]$ cat d.yml 
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: apply latest updates
+    yum:
+     name: '*'
+     state: latest
+[amit@slave tmp]$ cat e.yml 
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  vars:
+   src_path: /tmp/index.html
+   dest_path: /var/www/html
+  tasks:
+  - name: install package
+    yum:
+     name: httpd
+     state: present
+  - name: start the service
+    service:
+     name: httpd
+     state: started
+  - name: copy my web page file
+    copy:
+     src: "{{src_path}}"
+     dest: "{{dest_path}}"
+    notify: restart httpd
+  handlers:
+  - name: restart httpd
+    service:
+     name: httpd
+     state: restarted
+[amit@slave tmp]$ cat f.yml 
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  vars:
+   jenkins_admin_username: edureka
+   jenkins_admin_password: edureka
+  roles:
+  - geerlingguy.java
+  - geerlingguy.jenkins
