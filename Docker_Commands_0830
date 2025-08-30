@@ -1,0 +1,148 @@
+### Docker install 
+
+https://docs.docker.com/engine/install/rhel/
+
+
+### Docker command
+docker version
+ 1137  docker info
+ 1138  clear
+ 1139  docker ps -a
+ 1140  docker images
+ 1141  docker search nginx
+ 1142  clear
+ 1143  docker run nginx
+ 1144  docker ps -a
+ 1145  clear
+ 1146  docker run nginx
+ 1147  docker images
+ 1148  docker ps -a
+ 1149  docker run -itd --name amit nginx
+ 1150  docker ps -a
+ 1151  clear
+ 1152  docker run -it --name mahesh ubuntu
+ 1153  docker ps -a
+ 1154  docker run -it --name mahesh1 ubuntu
+ 1155  clear
+ 1156  docker ps -a
+ 1157  clear
+ 1158  docker ps
+ 1159  docker ps -a
+ 1160  clear
+ 1161  docker ps -a
+ 1162  docker start 3361a3ead5cd
+ 1163  docker ps -a
+ 1164  docker ps -a -q
+ 1165  docker start $(docker ps -a -q)
+ 1166  docker ps -a
+ 1167  docker restart ca64c89df272
+ 1168  docker ps -a
+ 1169  clear
+ 1170  docker ps -a
+ 1171  docker exec -it ca64c89df272 /bin/bash
+ 1172  docker ps -a
+ 1173  docker exec -it 3361a3ead5cd /bin/bash
+ 1174  clear
+ 1175  docker ps -a
+ 1176  docker images
+ 1177  docker ps -a
+ 1178  docker rename 2a81bf9a0919 aaditya
+ 1179  docker ps -a
+ 1180  docker logs ca64c89df272
+ 1181  docker logs -f b69de5865e1b
+ 1182  clear
+ 1183  docker ps -a
+ 1184  docker inspect b69de5865e1b
+ 1185  clear
+ 1186  docker ps -a
+ 1187  colima restart
+ 1188  docker ps -a
+ 1189  docker start $(docker ps -a -q)
+ 1190  docker run -itd --name anil --restart always nginx
+ 1191  docker ps -a
+ 1192  colima restart
+ 1193  docker ps -a
+ 1194  docker update
+ 1195  docker update --restart always ca64c89df272
+ 1196  colima restart
+ 1197  docker ps -a
+ 1198  docker start $(docker ps -a -q)
+ 1199  clear
+ 1200  docker ps -a
+ 1201  docker update --restart always 3361a3ead5cd
+ 1202  docker ps -a
+ 1203  docker inspect b69de5865e1b | grep "restart"
+ 1204  docker inspect b69de5865e1b | grep -i restart
+ 1205  docker inspect b69de5865e1b
+ 1206  docker images
+ 1207  clear
+ 1208  docker ps -a
+ 1209  docker top b69de5865e1b
+ 1210  docker stats
+ 1211  docker run -itd -m 512m ngin
+ 1212  docker run -itd -m 512m nginx
+ 1213  docker stats
+ 1214  docker run -itd -m 512m --cpus="0.5" nginx
+ 1215  docker stats
+ 1216  clear
+ 1217  docker run -itd -P --name shekhar nginx
+ 1218  docker ps -a
+ 1219  docker run -itd -P --name shekhar1 nginx
+ 1220  docker ps -a
+ 1221  docker restart 10fa0204c705
+ 1222  docker ps -a
+ 1223  docker run -itd -p 81:80 --name gaurav nginx
+ 1224  docker ps -a
+ 1225  docker restart b0e6d07152b1
+ 1226  docker ps -a
+ 1227  docker run -itd -p 81:80 --name gaurav1 nginx
+ 1228  clear
+ 1229  docker run -it ubuntu
+ 1230  clear
+ 1231  docker ps -a
+ 1232  docker commit
+ 1233  docker commit cd075f92ff43 yogesh
+ 1234  docker images
+ 1235  docker run -it yogesh
+ 1236  clear
+ 1237  docker ps -a
+ 1238  docker push devopstrainer1/0830:tagname
+ 1239  docker images
+ 1240  docker tag
+ 1241  docker tag yogesh devopstrainer1/0830:yogesh
+ 1242  docker images
+ 1243  docker login
+ 1244  docker push devopstrainer1/0830:yogesh
+ 1245  docker pull devopstrainer1/0830:yogesh
+ 1246  hostname
+ 1247  clear
+ 1248  docker images
+ 1249  docker run aquasec/trivy image ubuntu
+ 1250  docker run aquasec/trivy sbom ubuntu
+ 1251  clear
+ 1252  docker ps -a
+ 1253  docker container prune
+ 1254  docker ps -a
+ 1255  clear
+ 1256  docker images
+ 1257  docker save nginx -o edureka.tar
+ 1258  ls
+ 1259  docker rmi nginx
+ 1260  docker rmi nginx -f
+ 1261  docker images
+ 1262  docker image prune
+ 1263  docker images
+ 1264  clear
+ 1265  docker images
+ 1266  ls
+ 1267  docker load < edureka.tar
+ 1268  docker images
+ 1269  ls
+ 1270  clear
+ 1271  docker ps -a
+ 1272  docker rm cd075f92ff43
+ 1273  docker stop cd075f92ff43
+ 1274  docker rm cd075f92ff43
+ 1275  docker ps -a
+ 1276  docker rm d0cd511e31f7 -f
+ 1277  docker ps -a
