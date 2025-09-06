@@ -1,0 +1,148 @@
+### Kubermetes Yaml files
+
+## ist file
+ 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: edureka
+spec:
+  containers:
+    - name: amit
+      image: httpd
+
+### 2nd file
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: edureka1
+spec:
+  containers:
+    - name: amit
+      image: httpd
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "100m"
+
+### 3rd file
+ 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: edureka2
+spec:
+  containers:
+    - name: amit
+      image: httpd
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "100m"
+
+### 4th file
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: edureka5
+  namespace: mary
+  labels:
+    app: abc
+    teach: edureka
+    app: docker
+spec:
+  containers:
+    - name: amit
+      image: httpd
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+
+
+#### ad-hoc commenands
+
+kubectl version
+  503  kubectl get nodes
+  504  kubectl get nodes -o wide
+  505  clear
+  506  kubectl get pods
+  507  kubectl run pod1 --image nginx
+  508  kubectl get pods
+  509  kubectl get pods -o wide
+  510  kubectl describe pod1
+  511  kubectl describe pod pod1
+  512  kubecl exec -it pod1 -- bash
+  513  kubectl exec -it pod1 -- bash
+  514  kubectl get pods -o wide
+  515  kubectl edit pod pod1
+  516  kubectl get pods -o wide
+  517  kubectl describe pod pod1
+  518  kubectl logs pod1
+  519  kubectl logs -f pod1
+  520  kubectl delete pod pod1
+  521  cd /tmp
+  522  vi a.yml
+  523  kubectl apply -f a.yml 
+  524  kubectl get pods
+  525  kubectl describe pod edureka
+  526  kubectl run pod1 --image nginx
+  527  kubectl describe pod pod1
+  528  kubectl apply -f a.yml 
+  529  vi a.yml 
+  530  kubectl apply -f a.yml 
+  531  vi a.yml 
+  532  kubectl apply -f a.yml 
+  533  kubectl get pods
+  534  kubectl get pods -o wide
+  535  cp a.yml b.yml
+  536  vi b.yml
+  537  kubectl apply -f b.yml 
+  538  clear
+  539  kubectl get pods
+  540  kubectl describe pod edureka1
+  541  kubectl describe pod edureka
+  542  kubectl describe pod edureka1
+  543  cat b.yml 
+  544  vi b.yml
+  545  kubectl apply -f b.yml 
+  546  cp b.yml c.yml
+  547  vi c.yml 
+  548  kubectl apply -f c.yml 
+  549  kubectl describe pod edureka2
+  550  ls
+  551  cp c.yml d.yml
+  552  vi d.yml
+  553  kubectl apply -f d.yml 
+  554  kubectl describe pod edureka3
+  555  clear
+  556  kubectl get pods
+  557  kubectl get pods --show-labels
+  558  kubectl run pod2 --image nginx
+  559  kubectl get pods --show-labels
+  560  ls
+  561  vi d.yml
+  562  kubectl apply -f d.yml 
+  563  kubectl get pods --show-labels
+  564  vi d.yml
+  565  kubectl apply -f d.yml 
+  566  kubectl get pods --show-labels
+  567  cat d.yml 
+  568  clear
+  569  kubectl get pods --show-labels
+  570  kubectl get pods -l app=abc
+  571  kubectl get pods -l teach=edureka
+  572  kubectl get pods -l teach=edureka2
+  573  kubectl get namespaces
+  574  kubectl get pods --all -namespaces
+  575  kubectl get pods --all-namespaces
+  576  kubectl create namespace mary
+  577  kubectl get namespaces
+  578  kubectl get pods
+  579  vi d.yml
+  580  kubectl apply -f d,
+  581  kubectl apply -f d.yml
+  582  kubectl get pods -n mary
+  583  kubectl delete pod edureka
