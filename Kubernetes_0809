@@ -1,0 +1,118 @@
+## Deployment Replica set
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: abc123
+ labels:
+  app: nginx
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   app: nginx
+ template:
+  metadata:
+   labels:
+    app: nginx
+  spec:
+   containers:
+    - name: amit
+      image: nginx
+      ports:
+       - containerPort: 80
+
+#### service ( clusterip)
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: amit-cluster
+spec:
+ selector:
+  app: nginx
+ ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+ type: ClusterIP
+
+#### service ( nodeport)
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: amit-nodeport
+spec:
+ selector:
+  app: nginx
+ ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+ type: NodePort
+
+### service ( loadbalancer)
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: amit-nodeport
+spec:
+ selector:
+  app: nginx
+ ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+ type: LoadBalancer
+
+### random pod
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: random
+spec:
+ containers:
+  - name: jabez
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args: ["shuf -i 0-100 -n 1 >> /opt/num.out ; sleep 200;"]
+
+### volume mapping
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: random
+spec:
+ containers:
+  - name: jabez
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args: ["shuf -i 0-100 -n 1 >> /opt/num.out ; sleep 200;"]
+    volumeMounts:
+     - name: external-vol
+       mountPath: /opt
+ volumes:
+  - name: external-vol
+    hostPath:
+     path: /tmp
+     type: Directory
+
+#### secret management
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: database
+spec:
+ containers:
+  - name: yogesh
+    image: mysql
+    env:
+     - name: MYSQL_ROOT_PASSWORD
+       valueFrom:
+        secretKeyRef:
+         name: esther
+         key: password
